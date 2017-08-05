@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.bdqn.tangcco.dao.TbuserMapper">
+    <resultMap id="roleUserMap" type="Roleuser">
+        <id column="roluse_id" property="roluseId"></id>
+        <result column="roluse_desc" property="roluseDesc"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <association property="tbuser" resultMap="userMap" javaType="Tbuser"></association>
+        <association property="role" resultMap="roleMap" javaType="Role"></association>
+    </resultMap>
+    <resultMap id="roleMap" type="Role">
+        <id column="role_id" property="roleId"></id>
+        <result column="role_name" property="roleName"/>
+        <result column="role_level" property="roleLevel"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="role_status" property="roleStatus"/>
+    </resultMap>
+    <resultMap id="userMap" type="Tbuser">
+        <id column="user_id" property="userId"></id>
+        <result column="username" property="userName"/>
+        <result column="password" property="passWord"/>
+        <result column="last_login" property="lastLogin"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryUserByUsernameAndPassword" resultMap="roleUserMap">
+
+       SELECT * FROM tbuser u,role_user ru,role r
+        WHERE ru.user_id=u.user_id
+        AND ru.role_id=r.`role_id`
+        AND u.username=#{userName}
+        AND u.password=#{passWord}
+    </select>
+</mapper>

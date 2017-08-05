@@ -42,6 +42,9 @@ public class RoleMenu {
                 '}';
     }
 
+    public RoleMenu() {
+    }
+
     public Integer getRolemenId() {
         return rolemenId;
     }

@@ -23,7 +23,7 @@ public class Menu {
      */
 
     private Integer menuId;
-    private String menuName;
+    private String text;
     private String menuUrl;
     private Integer parentId;
     private Date createTime;
@@ -33,12 +33,24 @@ public class Menu {
     public String toString() {
         return "Menu{" +
                 "menuId=" + menuId +
-                ", menuName='" + menuName + '\'' +
+                ", text='" + text + '\'' +
                 ", menuUrl='" + menuUrl + '\'' +
                 ", parentId=" + parentId +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    public Menu() {
+    }
+
+    public Menu(Integer menuId, String text, String menuUrl, Integer parentId, Date createTime, Date updateTime) {
+        this.menuId = menuId;
+        this.text = text;
+        this.menuUrl = menuUrl;
+        this.parentId = parentId;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 
     public Integer getMenuId() {
@@ -49,12 +61,12 @@ public class Menu {
         this.menuId = menuId;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getText() {
+        return text;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getMenuUrl() {
