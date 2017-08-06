@@ -76,14 +76,13 @@
 
     }
 </script>
-<body class="easyui-layout">
+<body class="easyui-layout">toProject
+
 <div region="north" style="height: 10%">
     欢迎 ${user.role.roleName}光临
 </div>
 <div region="west" style="width: 10%" title="菜单栏">
-
-
-
+    <a href="#" onclick="addTabs('产品管理','${pageContext.request.contextPath}/toProject.controller')">管理</a>
     <ul id="rootTree"></ul>
 
 
