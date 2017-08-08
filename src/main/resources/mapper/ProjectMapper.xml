@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.bdqn.tangcco.dao.ProjectMapper">
+    <resultMap id="proMap" type="cn.bdqn.tangcco.entity.Project">
+        <id property="projectId" column="project_id"></id>
+        <result property="projectName" column="project_name"></result>
+        <result property="projectDesc" column="project_desc"/>
+        <result property="projectStatus" column="project_status"/>
+        <result property="projectVersion" column="project_version"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="addProject">
+        INSERT INTO project VALUES
+        (null,#{projectName},#{projectDesc},#{projectVersion},#{projectStatus},
+        #{createTime},#{updateTime})
+    </insert>
+    <update id="updateProject">
+        UPDATE project SET
+        project_name=#{projectName},project_desc=#{projectDesc},project_status=#{projectStatus},
+        project_version=#{projectVersion},update_time=#{updateTime}
+        where
+        project_id=#{projectId}
+    </update>
+
+
+    <delete id="deleteProjectByList">
+      DELETE from project WHERE project_id IN
+      <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </delete>
+
+    <select id="queryAllProject" resultMap="proMap">
+        select * from project ORDER BY update_time DESC limit #{start},#{rows}
+    </select>
+
+    <select id="detailProject" resultMap="proMap">
+        select * from project WHERE project_id=#{projectId}
+    </select>
+
+    <select id="queryCountProject" resultType="java.lang.Integer">
+        SELECT count(*) from project
+    </select>
+</mapper>
