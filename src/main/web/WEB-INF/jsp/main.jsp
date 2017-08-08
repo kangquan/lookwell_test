@@ -76,13 +76,13 @@
 
     }
 </script>
+
 <body class="easyui-layout">
+
 <div region="north" style="height: 10%">
     欢迎 ${user.role.roleName}光临
 </div>
 <div region="west" style="width: 10%" title="菜单栏">
-
-
 
     <ul id="rootTree"></ul>
 

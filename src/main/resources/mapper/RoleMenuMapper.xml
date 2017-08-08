@@ -5,7 +5,7 @@
 <mapper namespace="cn.bdqn.tangcco.dao.RoleMenuMapper">
 
     <resultMap id="roleMenuMap" type="cn.bdqn.tangcco.entity.RoleMenu">
-        <id property="rolmenId" column="rolmen_id"></id>
+        <id property="rolemenId" column="rolmen_id"></id>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
         <result property="rolmenDesc" column="rolmen_desc"/>
